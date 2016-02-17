@@ -17,7 +17,6 @@ library(scatterD3)
 library(shiny)
 
 
-
 # Set the working directory and read the required data
 # setwd("//file/UsersY$/yzh215/Home/Desktop/InteractiveMap_Release")
 # setwd("/home/cococatty/Desktop/InteractiveMap_Release")
@@ -82,9 +81,7 @@ ui <- shinyUI(fluidPage(
     , position="center"
     , height= "auto"
   )
-)
-)
-
+))
 
 
 #Definte server logic required to draw the map
@@ -111,14 +108,12 @@ server <- function(input, output, session) {
     , server = TRUE
   )
   
-  
   observe({
     if (length(input$travelMeans) > maxGrp)
     {
       updateCheckboxGroupInput(session, 'travelMeans', selected = tail(input$travelMeans,maxGrp))
     }
   })
-  
   
   output$biMapText <- renderText({
     paste("Red: ", meandata$MeanName[meandata$MeanCode == input$travelMeans[1]]
@@ -127,7 +122,6 @@ server <- function(input, output, session) {
   })
   
   output$oneMap <- renderPlot(singleMap(input$categories, input$travelMeans, input$classIntMethod))
-#  output$oneMapText <- renderText({ paste("Selected travel mean: ", meandata$MeanName[meandata$MeanCode == input$travelMeans[2]] )})
   output$biMap  <- renderPlot(biMap(input$travelMeans))
   
   biList <- reactive({
@@ -147,12 +141,7 @@ server <- function(input, output, session) {
     return (plot)
   })
   
-  #img <- reactive({legendBox(input$travelMeans)})  
-  #reactive({legendBox(input$travelMeans)})  
-  
-  output$boxLegend <- renderImage(
-    #renderPlot(
-    {
+  output$boxLegend <- renderImage({
       library(png)
       dat <- expand.grid(blue=seq(255, 0, by=-10), red=seq(255, 0, by=-10))
       dat <- within(dat, mix <- rgb(green=0, red=red, blue=blue, maxColorValue=255))
