@@ -16,10 +16,10 @@ require("png") || install.packages("png")
 travelMean <- c()
 
 # Set the working directory and read the required data
-# setwd("//file/UsersY$/yzh215/Home/Desktop/InteractiveMap")
-# setwd("/home/cococatty/Desktop/InteractiveMap")
-# setwd("C:/Users/User/Desktop/InteractiveMap")
-setwd("C:/Users/Josh/Desktop/InteractiveMap")
+# setwd("//file/UsersY$/yzh215/Home/Desktop/InteractiveMap_Release")
+# setwd("/home/cococatty/Desktop/InteractiveMap_Release")
+# setwd("C:/Users/User/Desktop/InteractiveMap_Release")
+setwd("C:/Users/Josh/Desktop/InteractiveMap_Release")
 
 
 # Reading required data
