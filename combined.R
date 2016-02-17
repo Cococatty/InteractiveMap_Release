@@ -1,6 +1,5 @@
-# LAST UPDATED AT 10/2, 12pm
+# LAST UPDATED AT 17/2, 10pm
 # 
-# NEXT TO DO: CHANGE THE "MIX" TO A MEANINGFUL NAME
 
 
 if (!require("devtools"))

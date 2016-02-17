@@ -1,4 +1,4 @@
-# LAST UPDATED AT 10/2, 12pm
+# LAST UPDATED AT 17/2, 10pm
 # 
 
 # Clearing up the data
@@ -218,5 +218,3 @@ plotLegend <- function() {
 }
 
 plotLegend()
-#singleMap(5, travelMean = as.character(meandata$MeanCode[1]), "pretty")
-#title(paste ("Map of New Zealand \n Travel mean: ", meandata$MeanName[meandata$MeanCode == travelMean]))
