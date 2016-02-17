@@ -36,7 +36,7 @@ ui <- shinyUI(fluidPage(
   titlePanel(title = "Interactive Map of New Zealand", windowTitle = "Interactive Map of New Zealand"),
   
   sidebarPanel(
-    sliderInput("categories", "Number of Categories", min = 1, max = 10, value = 5
+    sliderInput("categories", "Number of Intervals", min = 1, max = 10, value = 5
     )
     , br()
     , selectInput(
