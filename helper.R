@@ -1,17 +1,16 @@
 # LAST UPDATED AT 10/2, 12pm
 # 
-# NEXT TO DO: CHANGE THE "MIX" TO A MEANINGFUL NAME
-
 
 # Clearing up the data
-# rm(list=ls())
+rm(list=ls())
 
 # Loading the requiring sources
 require("classInt") || install.packages("classInt")
 require("colorRamps") || install.packages("colorRamps")
 require("maptools") || install.packages("maptools")
 require("stringr") || install.packages("stringr")
-
+require("ggplot2") || install.packages("ggplot2")
+require("png") || install.packages("png")
 
 # Initializing the variables
 travelMean <- c()
@@ -143,19 +142,6 @@ prepareTwoMeans <- function(travelMeans) {
   return(listx)  
 }
 
-
-legendBox <- function(travelMeans) {
-  dat <- expand.grid(blue=seq(255, 0, by=-10), red=seq(255, 0, by=-10))
-  dat <- within(dat, mix <- rgb(green=0, red=red, blue=blue, maxColorValue=255))
-  
-  library(ggplot2)
-  ggplot(dat, aes(x=red, y=blue)) + 
-    geom_tile(aes(fill=mix)) + 
-    scale_fill_identity() +
-    xlab(as.character(meandata$MeanName[meandata$MeanCode == travelMeans[1]])) +
-    ylab(as.character(meandata$MeanName[meandata$MeanCode == travelMeans[2]]))
-}
-
 # Function to plot color bar
 colorbar <- function(colourlist, travelMeans, min, max=-min, nticks=5, ticks=seq(min, max, len=nticks)) {#, travelMeans
   lut <- colorRampPalette(colourlist)(100)
@@ -177,10 +163,7 @@ biMap <- function(travelMeans)
   fullList <- prepareTwoMeans(travelMeans)
   par(mfrow=c(1,2))
   plot(shape, legend=FALSE, border = "Black", col= fullList$mix)
-  #legend('bottomright', legend= c("legendText"), title = 'Legend', fill= legendBox(travelMeans), bty = 'o')#, pch= 1
-  #colorbar(c("black", "red", "purple", "blue", "black"), travelMeans, -10)
-  par(mfrow=c(1,2))
-  legendBox(travelMeans)
+  colorbar(c("black", "red", "purple", "blue", "black"), travelMeans, -10)
 }
 
 
@@ -234,5 +217,6 @@ plotLegend <- function() {
   dev.off()
 }
 
+plotLegend()
 #singleMap(5, travelMean = as.character(meandata$MeanCode[1]), "pretty")
 #title(paste ("Map of New Zealand \n Travel mean: ", meandata$MeanName[meandata$MeanCode == travelMean]))
